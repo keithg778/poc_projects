@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Include the CesiumJS JavaScript and CSS files -->
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.127/Build/Cesium/Cesium.js"></script>
+    <link
+      href="https://cesium.com/downloads/cesiumjs/releases/1.127/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="cesiumContainer"></div>
+    <script type="module">
+      // Your access token can be found at: https://ion.cesium.com/tokens.
+      // This is the default access token from your ion account
+
+      Cesium.Ion.defaultAccessToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmZDJlYjBhZi04NGJlLTRiZTAtOTk5Ny02NjU2ZDUwNjdkZmYiLCJpZCI6Mjg3MjI0LCJpYXQiOjE3NDI4MzI5ODl9.mnbcMRUBjOiFCWWkFoAqOZ_D9MwgfvnnM_9eQLz4uic";
+
+      // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+      const viewer = new Cesium.Viewer("cesiumContainer", {
+        terrain: Cesium.Terrain.fromWorldTerrain(),
+      });
+
+      // Add Cesium OSM Buildings, a global 3D buildings layer.
+      const buildingTileset = await Cesium.createOsmBuildingsAsync();
+      viewer.scene.primitives.add(buildingTileset);
+
+      // add geojson source
+      var geojsonOptions = {
+        clamptoground: true,
+      };
+      viewer.scene.mode = Cesium.SceneMode.SCENE2D;
+
+      const mmle = viewer.dataSources.add(
+        Cesium.GeoJsonDataSource.load(
+          {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-1",
+                  Station: "Sheffield Station",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-1.4656991, 53.3775449],
+                },
+                id: 0,
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-2",
+                  Station: "Chesterfield Station",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-1.4227432, 53.238343],
+                },
+                id: 1,
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-3",
+                  Station: "Derby Station",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-1.4659156, 52.9161645],
+                },
+                id: 2,
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-4",
+                  Station: "Nottingham Station",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-1.1485544, 52.9470362],
+                },
+                id: 3,
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-5",
+                  Station: "East Midlands Parkway Station",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-1.2701467, 52.8636536],
+                },
+                id: 4,
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-6",
+                  Station: "Lougborough Station",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-1.1985048, 52.7790197],
+                },
+                id: 5,
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-7",
+                  Station: "Leicester Station",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-1.1277033, 52.631192],
+                },
+                id: 6,
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-8",
+                  Station: "Wigston Station",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-1.1375502, 52.5823622],
+                },
+                id: 7,
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ID: "ST-9",
+                  Station: "Market Harborough",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-0.9122492, 52.4793768],
+                },
+                id: 8,
+              },
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  coordinates: [
+                    [-0.9186369281228508, 52.47924075850608],
+                    [-1.1351374072683598, 52.581033460089],
+                  ],
+                  type: "LineString",
+                },
+              },
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  coordinates: [
+                    [-1.1259480549219916, 52.63073107107715],
+                    [-1.1334478272712545, 52.58164294737276],
+                  ],
+                  type: "LineString",
+                },
+              },
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  coordinates: [
+                    [-1.1905202685080667, 52.77462590232793],
+                    [-1.1275802651818196, 52.63155552610357],
+                  ],
+                  type: "LineString",
+                },
+              },
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  coordinates: [
+                    [-1.2620587162833772, 52.86350117741267],
+                    [-1.1905141002762036, 52.775300174452525],
+                  ],
+                  type: "LineString",
+                },
+              },
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  coordinates: [
+                    [-1.2607423390519727, 52.86538629042866],
+                    [-1.1491761842155483, 52.94400959924852],
+                  ],
+                  type: "LineString",
+                },
+              },
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  coordinates: [
+                    [-1.4614661912460178, 52.91620232868053],
+                    [-1.2617529276779464, 52.86179563943628],
+                  ],
+                  type: "LineString",
+                },
+              },
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  coordinates: [
+                    [-1.421567045231285, 53.23005012404349],
+                    [-1.4613091469520043, 52.91527325638427],
+                  ],
+                  type: "LineString",
+                },
+              },
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  coordinates: [
+                    [-1.4215478600004587, 53.235686359338985],
+                    [-1.461242507553095, 53.3780485640188],
+                  ],
+                  type: "LineString",
+                },
+              },
+            ],
+          },
+          {
+            stroke: Cesium.Color.HOTPINK,
+            fill: Cesium.Color.PINK,
+            strokeWidth: 10,
+            markerSymbol: "?",
+          },
+          geojsonOptions
+        )
+      );
+
+      // zzom to to MMLE
+      viewer.flyTo(mmle);
+      // Fly the camera to San Francisco at the given longitude, latitude, and height.
+      // viewer.camera.flyTo({
+      //  destination: Cesium.Cartesian3.fromDegrees(-1.1485544,52.9470362, 400),
+      //  orientation: {
+      //    heading: Cesium.Math.toRadians(0.0),
+      //   pitch: Cesium.Math.toRadians(-15.0),
+      //  }
+      // });
+    </script>
+  </body>
+</html>
